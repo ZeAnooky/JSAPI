@@ -1,2 +1,4 @@
 # JSAPI
  Learning how to make an API with NodeJS.
+
+# THIS IS NOT A DOWNLOADABLE PROJECT. PLEASE IGNORE THIS REPO!
