@@ -29,6 +29,7 @@ document.getElementById('item').addEventListener('keydown', function (e) {
 function addItem (value) {
   addItemToDOM(value);
   document.getElementById('item').value = '';
+  sendtoAPI(value)
 
   data.todo.push(value);
   dataObjectUpdated();
@@ -119,4 +120,21 @@ function addItemToDOM(text, completed) {
   item.appendChild(buttons);
 
   list.insertBefore(item, list.childNodes[0]);
+}
+
+// Method to send data to API
+function sendtoAPI(item) {
+  var req = new XMLHttpRequest();
+  req.open('POST', '/add');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.send(JSON.stringify({ item: item }));
+
+  req.addEventListener('load', () => {
+    console.log('Request finalized.')
+  });
+
+  req.addEventListener('error', () => {
+    console.log('Request failed: error occurred.');
+    console.log(e);
+  });
 }
